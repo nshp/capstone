@@ -638,11 +638,20 @@ void AArch64_printInst(MCInst *MI, SStream *O, void *Info)
 
 		switch(MCInst_getOpcode(MI)) {
 			default: break;
+			case AArch64_INSvi64gpr:
 			case AArch64_UMOVvi64:
 				 arm64_op_addVectorArrSpecifier(MI, ARM64_VAS_1D);
 				 break;
+			case AArch64_INSvi32gpr:
 			case AArch64_UMOVvi32:
 				 arm64_op_addVectorArrSpecifier(MI, ARM64_VAS_1S);
+				 break;
+			case AArch64_INSvi16gpr:
+			case AArch64_UMOVvi16:
+				 arm64_op_addVectorArrSpecifier(MI, ARM64_VAS_1H);
+				 break;
+			case AArch64_INSvi8gpr:
+				 arm64_op_addVectorArrSpecifier(MI, ARM64_VAS_1B);
 				 break;
 		}
 	} else {
